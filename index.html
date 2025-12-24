@@ -1,28 +1,786 @@
-<!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bocanegra Asset Management | Institutional Investment Management</title>
-    <meta name="description" content="Bocanegra Asset Management is a hedge fund focused on active investment management, deep fundamental analysis, and long-term alpha generation." />
-    <meta name="author" content="Bocanegra Asset Management" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bocanegra Asset Management | Institutional Investment Management</title>
+  <meta name="description" content="Bocanegra Asset Management is a hedge fund focused on active investment management, deep fundamental analysis, and long-term alpha generation.">
+  <meta name="author" content="Bocanegra Asset Management">
+  
+  <meta property="og:title" content="Bocanegra Asset Management">
+  <meta property="og:description" content="Active investment management with deep fundamental analysis and long-term alpha generation.">
+  <meta property="og:type" content="website">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@BocanegraAM">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    :root {
+      --background: #0a0a0a;
+      --foreground: #fafafa;
+      --muted: #1a1a1a;
+      --muted-foreground: #a1a1a1;
+      --secondary-foreground: #d4d4d4;
+      --border: #2a2a2a;
+      --destructive: #ef4444;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      letter-spacing: -0.02em;
+    }
+    
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      letter-spacing: -0.01em;
+    }
+    
+    h3 {
+      font-size: 1.25rem;
+    }
+    
+    p {
+      font-weight: 300;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 3rem;
+      }
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background-color: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(8px);
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 5rem;
+    }
+    
+    .logo {
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--foreground);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: none;
+      gap: 3rem;
+    }
+    
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+    
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      transition: color 0.5s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--foreground);
+    }
+    
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--foreground);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 48rem;
+    }
+    
+    .hero h1 {
+      margin-bottom: 2.5rem;
+    }
+    
+    .hero h1 span {
+      color: var(--muted-foreground);
+    }
+    
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      max-width: 36rem;
+      margin-bottom: 4rem;
+      line-height: 1.8;
+    }
+    
+    @media (min-width: 768px) {
+      .hero p {
+        font-size: 1.25rem;
+      }
+    }
+    
+    .btn-primary {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--background);
+      background-color: var(--foreground);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+    
+    .hero-divider {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+      opacity: 0.3;
+    }
+    
+    /* Sections */
+    section {
+      padding: 6rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      section {
+        padding: 8rem 0;
+      }
+    }
+    
+    .section-label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-foreground);
+      margin-bottom: 2rem;
+    }
+    
+    .section-header {
+      margin-bottom: 5rem;
+    }
+    
+    .section-header h2 {
+      margin-bottom: 2rem;
+    }
+    
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      max-width: 36rem;
+    }
+    
+    .section-content {
+      max-width: 48rem;
+    }
+    
+    .border-top {
+      border-top: 1px solid rgba(42, 42, 42, 0.3);
+    }
+    
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+    
+    .about-grid p {
+      color: var(--secondary-foreground);
+      line-height: 2;
+    }
+    
+    .principles {
+      margin-top: 6rem;
+      padding-top: 4rem;
+      border-top: 1px solid rgba(42, 42, 42, 0.3);
+    }
+    
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    @media (min-width: 768px) {
+      .principles-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+      }
+    }
+    
+    .principle h3 {
+      color: var(--foreground);
+      margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .principle p {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      line-height: 1.7;
+    }
+    
+    /* Approach */
+    .pillar {
+      padding: 3rem 0;
+      border-top: 1px solid rgba(42, 42, 42, 0.3);
+    }
+    
+    .pillar:first-child {
+      border-top: none;
+    }
+    
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .pillar-grid {
+        grid-template-columns: 1fr 3fr 8fr;
+        gap: 2rem;
+      }
+    }
+    
+    .pillar-number {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      letter-spacing: 0.1em;
+    }
+    
+    .pillar h3 {
+      color: var(--foreground);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    .pillar-content p {
+      color: var(--muted-foreground);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .pillar-points {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      list-style: none;
+    }
+    
+    @media (min-width: 640px) {
+      .pillar-points {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .pillar-points li {
+      font-size: 0.875rem;
+      color: var(--secondary-foreground);
+    }
+    
+    /* Team */
+    .team-member {
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(42, 42, 42, 0.3);
+    }
+    
+    .team-member:first-child {
+      border-top: none;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .team-grid {
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+      }
+    }
+    
+    .team-member h3 {
+      color: var(--foreground);
+      font-size: 1.125rem;
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 0.25rem;
+    }
+    
+    .team-member .role {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+    
+    .team-member .bio {
+      font-size: 0.875rem;
+      color: var(--secondary-foreground);
+      line-height: 1.7;
+    }
+    
+    /* Contact */
+    .contact-content {
+      max-width: 36rem;
+    }
+    
+    .form-group {
+      margin-bottom: 2rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-foreground);
+      margin-bottom: 0.75rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+      color: var(--foreground);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(161, 161, 161, 0.5);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-bottom-color: rgba(250, 250, 250, 0.5);
+    }
+    
+    .form-group textarea {
+      resize: none;
+      min-height: 100px;
+    }
+    
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(42, 42, 42, 0.3);
+      padding: 4rem 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+    
+    .footer-logo {
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--foreground);
+    }
+    
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+    
+    .footer-disclaimer {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(42, 42, 42, 0.2);
+    }
+    
+    .footer-disclaimer p {
+      font-size: 0.75rem;
+      color: rgba(161, 161, 161, 0.7);
+      line-height: 1.7;
+      max-width: 48rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Bocanegra</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#approach">Approach</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <meta property="og:title" content="Bocanegra Asset Management" />
-    <meta property="og:description" content="Active investment management with deep fundamental analysis and long-term alpha generation." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            Bocanegra<br>
+            <span>Asset Management</span>
+          </h1>
+          <p>
+            Fundamental-driven investing with a long-term perspective. 
+            Generating sustainable alpha through rigorous analysis 
+            and disciplined risk management.
+          </p>
+          <a href="#contact" class="btn-primary">Contact</a>
+        </div>
+      </div>
+      <div class="hero-divider">
+        <div class="container">
+          <div class="divider"></div>
+        </div>
+      </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@BocanegraAM" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-content">
+          <div class="section-header">
+            <span class="section-label">About</span>
+            <h2>A Foundation Built on Conviction</h2>
+          </div>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  </head>
+          <div class="about-grid">
+            <div>
+              <p>
+                Bocanegra Asset Management was founded with a singular vision: to deliver 
+                exceptional risk-adjusted returns through deep fundamental research and 
+                disciplined investment processes.
+              </p>
+              <p style="margin-top: 1.5rem;">
+                We believe that thorough analysis, patience, and conviction are the 
+                cornerstones of successful investing.
+              </p>
+            </div>
+            <div>
+              <p>
+                Our approach is rooted in understanding businesses at their core—their 
+                competitive advantages, management quality, and long-term value creation 
+                potential.
+              </p>
+              <p style="margin-top: 1.5rem;">
+                We seek to identify opportunities where the market price diverges 
+                significantly from intrinsic value.
+              </p>
+            </div>
+          </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+          <div class="principles">
+            <div class="principles-grid">
+              <div class="principle">
+                <h3>Fundamental Focus</h3>
+                <p>Deep, proprietary research drives every investment decision we make.</p>
+              </div>
+              <div class="principle">
+                <h3>Long-Term Orientation</h3>
+                <p>We invest with patience, allowing our convictions to compound over time.</p>
+              </div>
+              <div class="principle">
+                <h3>Risk Discipline</h3>
+                <p>Rigorous risk management is embedded in our investment process.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="border-top">
+      <div class="container">
+        <div class="section-content">
+          <div class="section-header">
+            <span class="section-label">Approach</span>
+            <h2>Our Investment Process</h2>
+            <p>
+              A structured, repeatable process that combines rigorous analysis 
+              with experienced judgment.
+            </p>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-grid">
+              <span class="pillar-number">01</span>
+              <h3>Research</h3>
+              <div class="pillar-content">
+                <p>
+                  Our investment process begins with comprehensive fundamental analysis. We conduct deep-dive research into industries, competitive dynamics, and individual companies to develop differentiated insights.
+                </p>
+                <ul class="pillar-points">
+                  <li>Proprietary fundamental research</li>
+                  <li>Direct engagement with management</li>
+                  <li>Industry expert network</li>
+                  <li>Rigorous financial modeling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-grid">
+              <span class="pillar-number">02</span>
+              <h3>Risk Management</h3>
+              <div class="pillar-content">
+                <p>
+                  We view risk management not as a constraint, but as a source of competitive advantage. Our disciplined approach helps protect capital while maintaining exposure to attractive opportunities.
+                </p>
+                <ul class="pillar-points">
+                  <li>Position sizing discipline</li>
+                  <li>Portfolio diversification</li>
+                  <li>Continuous monitoring</li>
+                  <li>Stress testing & scenario analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-grid">
+              <span class="pillar-number">03</span>
+              <h3>Portfolio Construction</h3>
+              <div class="pillar-content">
+                <p>
+                  We construct portfolios with conviction, concentrating capital in our highest-quality ideas while maintaining appropriate diversification to manage risk.
+                </p>
+                <ul class="pillar-points">
+                  <li>Concentrated, high-conviction positions</li>
+                  <li>Risk-adjusted position weighting</li>
+                  <li>Dynamic portfolio optimization</li>
+                  <li>Correlation awareness</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="border-top">
+      <div class="container">
+        <div class="section-content">
+          <div class="section-header">
+            <span class="section-label">Team</span>
+            <h2>Leadership</h2>
+            <p>
+              An experienced team united by a shared commitment to excellence 
+              and delivering results for our investors.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-grid">
+              <div>
+                <h3>Carlos Bocanegra</h3>
+                <p class="role">Founder & Chief Investment Officer</p>
+              </div>
+              <p class="bio">
+                Over 20 years of investment experience across global equity markets. Previously led investment teams at major institutional investors.
+              </p>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="team-grid">
+              <div>
+                <h3>María del Valle</h3>
+                <p class="role">Partner & Portfolio Manager</p>
+              </div>
+              <p class="bio">
+                Extensive experience in fundamental research and portfolio management. Specializes in technology and healthcare sectors.
+              </p>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="team-grid">
+              <div>
+                <h3>Andrés Mendoza</h3>
+                <p class="role">Partner & Head of Research</p>
+              </div>
+              <p class="bio">
+                Deep expertise in quantitative and fundamental analysis. Previously analyst at leading investment banks.
+              </p>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="team-grid">
+              <div>
+                <h3>Laura Espinoza</h3>
+                <p class="role">Chief Operating Officer</p>
+              </div>
+              <p class="bio">
+                Proven track record in operational excellence and risk management across financial services.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="border-top">
+      <div class="container">
+        <div class="contact-content">
+          <div class="section-header">
+            <span class="section-label">Contact</span>
+            <h2>Get in Touch</h2>
+            <p>
+              For inquiries about our firm or investment opportunities, 
+              please reach out using the form below.
+            </p>
+          </div>
+
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <span class="footer-logo">Bocanegra Asset Management</span>
+        <span class="footer-copyright">© 2025 All rights reserved.</span>
+      </div>
+      <div class="footer-disclaimer">
+        <p>
+          This website is for informational purposes only and does not constitute an offer 
+          to sell or a solicitation of an offer to buy any securities. Past performance is 
+          not indicative of future results. Investing involves risk, including the potential 
+          loss of principal.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
