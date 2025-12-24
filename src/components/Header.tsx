@@ -46,7 +46,7 @@ const Header = () => {
             }}
             className="text-sm tracking-widest uppercase text-foreground font-normal"
           >
-            Bocanegra
+            BAM FUNDS
           </a>
 
           <div className="hidden md:flex items-center gap-12">
