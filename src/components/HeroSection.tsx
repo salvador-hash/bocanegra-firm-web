@@ -6,7 +6,7 @@ const HeroSection = () => {
           <h1 className="text-foreground mb-10">
             Bocanegra
             <br />
-            <span className="text-muted-foreground">Asset Management</span>
+            <span className="text-muted-foreground">Asset Management LP</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-xl mb-16">
