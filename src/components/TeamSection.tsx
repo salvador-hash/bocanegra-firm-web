@@ -1,6 +1,3 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-
 interface TeamMember {
   id: string;
   name: string;
@@ -36,19 +33,11 @@ const teamMembers: TeamMember[] = [
 ];
 
 const TeamSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="team" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1 }}
-            className="mb-20"
-          >
+        <div className="max-w-4xl">
+          <div className="mb-20">
             <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               Team
             </span>
@@ -59,15 +48,12 @@ const TeamSection = () => {
               An experienced team united by a shared commitment to excellence 
               and delivering results for our investors.
             </p>
-          </motion.div>
+          </div>
 
           <div className="space-y-0">
-            {teamMembers.map((member, index) => (
-              <motion.div
+            {teamMembers.map((member) => (
+              <div
                 key={member.id}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 1, delay: 0.2 + index * 0.1 }}
                 className="py-10 border-t border-border/30 first:border-t-0"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -81,7 +67,7 @@ const TeamSection = () => {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

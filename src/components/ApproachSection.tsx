@@ -1,6 +1,3 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-
 const pillars = [
   {
     number: "01",
@@ -41,19 +38,11 @@ const pillars = [
 ];
 
 const ApproachSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="approach" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1 }}
-            className="mb-20"
-          >
+        <div className="max-w-4xl">
+          <div className="mb-20">
             <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               Approach
             </span>
@@ -64,15 +53,12 @@ const ApproachSection = () => {
               A structured, repeatable process that combines rigorous analysis 
               with experienced judgment.
             </p>
-          </motion.div>
+          </div>
 
           <div className="space-y-0">
             {pillars.map((pillar, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 1, delay: 0.2 + index * 0.15 }}
                 className="py-12 border-t border-border/30 first:border-t-0"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -102,7 +88,7 @@ const ApproachSection = () => {
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -39,7 +38,6 @@ const Header = () => {
     >
       <nav className="section-container">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <a
             href="#"
             onClick={(e) => {
@@ -51,7 +49,6 @@ const Header = () => {
             Bocanegra
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <button
@@ -64,7 +61,6 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-foreground p-2"
@@ -75,30 +71,21 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4 }}
-            className="md:hidden bg-background border-t border-border/30"
-          >
-            <div className="section-container py-8 flex flex-col gap-6">
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-left text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors py-2"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-background border-t border-border/30">
+          <div className="section-container py-8 flex flex-col gap-6">
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => scrollToSection(link.href)}
+                className="text-left text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
