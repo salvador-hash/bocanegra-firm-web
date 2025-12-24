@@ -33,7 +33,6 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.9 }}
-            className="flex gap-8"
           >
             <button
               onClick={() => {
@@ -43,15 +42,6 @@ const HeroSection = () => {
               className="btn-primary"
             >
               Contact
-            </button>
-            <button
-              onClick={() => {
-                const element = document.querySelector("#careers");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-ghost"
-            >
-              Careers
             </button>
           </motion.div>
         </div>
