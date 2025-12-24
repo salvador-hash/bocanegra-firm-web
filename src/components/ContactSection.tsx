@@ -62,6 +62,8 @@ const ContactSection = () => {
     }
 
     setIsSubmitting(true);
+
+    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
@@ -74,93 +76,111 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding border-t border-border/10">
+    <section id="contact" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32">
-          {/* Left column */}
+        <div ref={ref} className="max-w-xl">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1.5 }}
-            className="lg:col-span-4"
+            transition={{ duration: 1 }}
+            className="mb-16"
           >
-            <h2 className="text-foreground mb-8">
+            <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               Contact
+            </span>
+            <h2 className="text-foreground mb-8">
+              Get in Touch
             </h2>
-            <p className="text-muted-foreground leading-loose max-w-sm">
+            <p className="text-muted-foreground">
               For inquiries about our firm or investment opportunities, 
-              please reach out using the form.
+              please reach out using the form below.
             </p>
           </motion.div>
 
-          {/* Right column - Form */}
-          <motion.div
+          <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1.5, delay: 0.3 }}
-            className="lg:col-span-8 lg:pt-4"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="space-y-8"
           >
-            <form onSubmit={handleSubmit} className="max-w-lg space-y-10">
-              <div>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={`w-full px-0 py-4 bg-transparent border-b text-foreground placeholder:text-muted-foreground/40 focus:outline-none transition-all duration-500 text-lg ${
-                    errors.name ? "border-destructive" : "border-border/20 focus:border-foreground/30"
-                  }`}
-                  placeholder="Name"
-                />
-                {errors.name && (
-                  <p className="mt-3 text-xs text-destructive">{errors.name}</p>
-                )}
-              </div>
-
-              <div>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={`w-full px-0 py-4 bg-transparent border-b text-foreground placeholder:text-muted-foreground/40 focus:outline-none transition-all duration-500 text-lg ${
-                    errors.email ? "border-destructive" : "border-border/20 focus:border-foreground/30"
-                  }`}
-                  placeholder="Email"
-                />
-                {errors.email && (
-                  <p className="mt-3 text-xs text-destructive">{errors.email}</p>
-                )}
-              </div>
-
-              <div>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={3}
-                  className={`w-full px-0 py-4 bg-transparent border-b text-foreground placeholder:text-muted-foreground/40 focus:outline-none transition-all duration-500 resize-none text-lg ${
-                    errors.message ? "border-destructive" : "border-border/20 focus:border-foreground/30"
-                  }`}
-                  placeholder="Message"
-                />
-                {errors.message && (
-                  <p className="mt-3 text-xs text-destructive">{errors.message}</p>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-xs tracking-widest text-muted-foreground uppercase mb-3"
               >
-                {isSubmitting ? "Sending..." : "Send"}
-              </button>
-            </form>
-          </motion.div>
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full px-0 py-3 bg-transparent border-b text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-all ${
+                  errors.name ? "border-destructive" : "border-border/50 focus:border-foreground/50"
+                }`}
+                placeholder="Your name"
+              />
+              {errors.name && (
+                <p className="mt-2 text-xs text-destructive">{errors.name}</p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-xs tracking-widest text-muted-foreground uppercase mb-3"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full px-0 py-3 bg-transparent border-b text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-all ${
+                  errors.email ? "border-destructive" : "border-border/50 focus:border-foreground/50"
+                }`}
+                placeholder="your@email.com"
+              />
+              {errors.email && (
+                <p className="mt-2 text-xs text-destructive">{errors.email}</p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-xs tracking-widest text-muted-foreground uppercase mb-3"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className={`w-full px-0 py-3 bg-transparent border-b text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-all resize-none ${
+                  errors.message ? "border-destructive" : "border-border/50 focus:border-foreground/50"
+                }`}
+                placeholder="Your message"
+              />
+              {errors.message && (
+                <p className="mt-2 text-xs text-destructive">{errors.message}</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+          </motion.form>
         </div>
       </div>
     </section>
