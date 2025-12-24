@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
           <div>
             <span className="text-sm tracking-widest uppercase text-foreground">
-              Bocanegra Asset Management
+              Bocanegra Asset Management LP
             </span>
           </div>
           <div>
