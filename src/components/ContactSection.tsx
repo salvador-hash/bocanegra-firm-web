@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
@@ -24,8 +23,6 @@ const contactSchema = z.object({
 type ContactForm = z.infer<typeof contactSchema>;
 
 const ContactSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
 
   const [formData, setFormData] = useState<ContactForm>({
@@ -63,7 +60,6 @@ const ContactSection = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
@@ -78,13 +74,8 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="max-w-xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1 }}
-            className="mb-16"
-          >
+        <div className="max-w-xl">
+          <div className="mb-16">
             <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               Contact
             </span>
@@ -95,15 +86,9 @@ const ContactSection = () => {
               For inquiries about our firm or investment opportunities, 
               please reach out using the form below.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="space-y-8"
-          >
+          <form onSubmit={handleSubmit} className="space-y-8">
             <div>
               <label
                 htmlFor="name"
@@ -180,7 +165,7 @@ const ContactSection = () => {
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
-          </motion.form>
+          </form>
         </div>
       </div>
     </section>

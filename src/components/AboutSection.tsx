@@ -1,35 +1,18 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-
 const AboutSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section id="about" className="section-padding">
       <div className="section-container">
-        <div ref={ref} className="max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1 }}
-            className="mb-20"
-          >
+        <div className="max-w-4xl">
+          <div className="mb-20">
             <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               About
             </span>
             <h2 className="text-foreground">
               A Foundation Built on Conviction
             </h2>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16"
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div className="space-y-6">
               <p className="text-secondary-foreground leading-loose">
                 Bocanegra Asset Management was founded with a singular vision: to deliver 
@@ -53,14 +36,9 @@ const AboutSection = () => {
                 significantly from intrinsic value.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="mt-24 pt-16 border-t border-border/30"
-          >
+          <div className="mt-24 pt-16 border-t border-border/30">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
               {[
                 {
@@ -84,7 +62,7 @@ const AboutSection = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
