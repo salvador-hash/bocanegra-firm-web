@@ -13,60 +13,59 @@ const CareersSection = () => {
   };
 
   return (
-    <section id="careers" className="section-padding bg-secondary/30">
+    <section id="careers" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="max-w-3xl mx-auto text-center">
+        <div ref={ref} className="max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1 }}
+            className="mb-16"
           >
-            <p className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
+            <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               Careers
-            </p>
-            <h2 className="text-foreground mb-6">
+            </span>
+            <h2 className="text-foreground">
               Join Our Team
             </h2>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="space-y-6 mb-12"
           >
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-secondary-foreground leading-loose">
               We are always looking for exceptional individuals who share our passion 
               for investing and commitment to excellence. At Bocanegra, you'll work 
               alongside experienced professionals in a collaborative environment that 
               values intellectual curiosity and rigorous analysis.
             </p>
 
-            <p className="text-muted-foreground leading-relaxed mb-10">
+            <p className="text-muted-foreground leading-loose">
               We offer competitive compensation, meaningful responsibility from day one, 
               and the opportunity to contribute to a growing firm with a strong culture.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.4 }}
           >
-            <button
-              onClick={scrollToContact}
-              className="px-8 py-4 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-all duration-300"
-            >
+            <button onClick={scrollToContact} className="btn-primary">
               Get in Touch
             </button>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-12 pt-8 border-t border-border"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mt-20 pt-10 border-t border-border/30"
           >
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs text-muted-foreground leading-relaxed max-w-xl">
               Bocanegra Asset Management is an equal opportunity employer. We celebrate 
               diversity and are committed to creating an inclusive environment for all employees.
             </p>

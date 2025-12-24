@@ -4,52 +4,49 @@
 
 @layer base {
   :root {
-    /* Institutional Dark Theme */
-    --background: 222 47% 6%;
-    --foreground: 210 20% 98%;
+    /* Refined Institutional Dark Theme */
+    --background: 220 20% 4%;
+    --foreground: 0 0% 95%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 20% 98%;
+    --card: 220 20% 6%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 220 20% 6%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 217 91% 30%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 220 20% 4%;
 
-    --secondary: 220 14% 15%;
-    --secondary-foreground: 210 20% 90%;
+    --secondary: 220 15% 10%;
+    --secondary-foreground: 0 0% 75%;
 
-    --muted: 220 14% 12%;
-    --muted-foreground: 215 16% 55%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 0 0% 50%;
 
-    --accent: 217 91% 30%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 220 15% 15%;
+    --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 217 91% 40%;
+    --border: 0 0% 15%;
+    --input: 220 15% 12%;
+    --ring: 0 0% 40%;
 
-    --radius: 0.25rem;
+    --radius: 0;
 
     /* Custom tokens */
-    --text-primary: 210 20% 98%;
-    --text-secondary: 215 16% 65%;
-    --text-muted: 215 16% 45%;
+    --text-primary: 0 0% 95%;
+    --text-secondary: 0 0% 65%;
+    --text-muted: 0 0% 45%;
     
-    --surface-elevated: 222 47% 10%;
-    --surface-overlay: 222 47% 12%;
-    
-    --accent-blue: 217 91% 30%;
-    --accent-green: 160 84% 18%;
+    --surface-elevated: 220 20% 8%;
+    --surface-overlay: 220 20% 10%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 20% 98%;
+    --background: 220 20% 4%;
+    --foreground: 0 0% 95%;
   }
 }
 
@@ -63,70 +60,81 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight text-foreground;
+    @apply font-serif tracking-tight text-foreground;
+    font-family: 'Cormorant Garamond', Georgia, serif;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+    @apply text-5xl md:text-6xl lg:text-7xl leading-none font-normal;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl leading-tight font-normal;
   }
 
   h3 {
-    @apply text-xl md:text-2xl;
+    @apply text-xl md:text-2xl font-normal;
   }
 
   p {
-    @apply text-secondary-foreground leading-relaxed;
+    @apply text-secondary-foreground leading-relaxed font-light;
   }
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-6 md:px-8 lg:px-12;
+    @apply max-w-6xl mx-auto px-6 md:px-8 lg:px-16;
   }
 
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-24 md:py-32 lg:py-40;
   }
 
   .text-gradient {
     @apply bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent;
   }
 
-  .card-institutional {
-    @apply bg-card border border-border rounded-sm p-8 md:p-10;
+  .divider {
+    @apply h-px bg-border/50 w-full;
   }
 
-  .divider {
-    @apply h-px bg-border w-full;
+  .divider-thin {
+    @apply h-px bg-border/30 w-full;
   }
 
   .link-underline {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-300 hover:after:w-full;
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-foreground/50 after:transition-all after:duration-500 hover:after:w-full;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 border border-foreground/20 text-foreground text-xs font-normal tracking-widest uppercase hover:bg-foreground hover:text-background transition-all duration-500;
+  }
+
+  .btn-ghost {
+    @apply text-xs font-normal tracking-widest uppercase text-muted-foreground hover:text-foreground transition-all duration-500;
   }
 }
 
 @layer utilities {
   .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
+    animation: fadeUp 0.8s ease-out forwards;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 1s ease-out forwards;
   }
 
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -141,5 +149,13 @@
     to {
       opacity: 1;
     }
+  }
+
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 }

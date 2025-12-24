@@ -40,48 +40,43 @@ const TeamSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="team" className="section-padding bg-background">
+    <section id="team" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="max-w-5xl mx-auto">
+        <div ref={ref} className="max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1 }}
+            className="mb-20"
           >
-            <p className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
-              Our Team
-            </p>
-            <h2 className="text-foreground mb-6">
+            <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
+              Team
+            </span>
+            <h2 className="text-foreground mb-8">
               Leadership
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-xl">
               An experienced team united by a shared commitment to excellence 
               and delivering results for our investors.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-0">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                className="card-institutional group"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 1, delay: 0.2 + index * 0.1 }}
+                className="py-10 border-t border-border/30 first:border-t-0"
               >
-                <div className="flex items-start gap-6">
-                  {/* Avatar placeholder */}
-                  <div className="w-16 h-16 rounded-sm bg-secondary flex-shrink-0 flex items-center justify-center">
-                    <span className="text-xl font-semibold text-muted-foreground">
-                      {member.name.split(" ").map((n) => n[0]).join("")}
-                    </span>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  <div className="lg:col-span-4">
+                    <h3 className="text-foreground text-lg font-serif mb-1">{member.name}</h3>
+                    <p className="text-muted-foreground text-sm">{member.role}</p>
                   </div>
-                  
-                  <div>
-                    <h3 className="text-foreground text-lg mb-1">{member.name}</h3>
-                    <p className="text-primary text-sm mb-3">{member.role}</p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                  <div className="lg:col-span-8">
+                    <p className="text-secondary-foreground text-sm leading-relaxed">
                       {member.bio}
                     </p>
                   </div>

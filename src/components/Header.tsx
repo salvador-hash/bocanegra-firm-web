@@ -32,9 +32,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
+          ? "bg-background/90 backdrop-blur-sm"
           : "bg-transparent"
       }`}
     >
@@ -47,18 +47,18 @@ const Header = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-lg font-semibold tracking-tight text-foreground"
+            className="text-sm tracking-widest uppercase text-foreground font-normal"
           >
             Bocanegra
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => scrollToSection(link.href)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 link-underline"
+                className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-500"
               >
                 {link.label}
               </button>
@@ -71,7 +71,7 @@ const Header = () => {
             className="md:hidden text-foreground p-2"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </nav>
@@ -83,15 +83,15 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-background border-b border-border"
+            transition={{ duration: 0.4 }}
+            className="md:hidden bg-background border-t border-border/30"
           >
-            <div className="section-container py-6 flex flex-col gap-4">
+            <div className="section-container py-8 flex flex-col gap-6">
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className="text-left text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors py-2"
                 >
                   {link.label}
                 </button>

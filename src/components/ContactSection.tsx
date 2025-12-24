@@ -1,7 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -77,19 +76,19 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-background">
+    <section id="contact" className="section-padding border-t border-border/30">
       <div className="section-container">
-        <div ref={ref} className="max-w-2xl mx-auto">
+        <div ref={ref} className="max-w-xl">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1 }}
+            className="mb-16"
           >
-            <p className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
+            <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
               Contact
-            </p>
-            <h2 className="text-foreground mb-6">
+            </span>
+            <h2 className="text-foreground mb-8">
               Get in Touch
             </h2>
             <p className="text-muted-foreground">
@@ -100,15 +99,15 @@ const ContactSection = () => {
 
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="space-y-8"
           >
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-xs tracking-widest text-muted-foreground uppercase mb-3"
               >
                 Name
               </label>
@@ -118,20 +117,20 @@ const ContactSection = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 bg-secondary border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                  errors.name ? "border-destructive" : "border-border"
+                className={`w-full px-0 py-3 bg-transparent border-b text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-all ${
+                  errors.name ? "border-destructive" : "border-border/50 focus:border-foreground/50"
                 }`}
                 placeholder="Your name"
               />
               {errors.name && (
-                <p className="mt-2 text-sm text-destructive">{errors.name}</p>
+                <p className="mt-2 text-xs text-destructive">{errors.name}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-xs tracking-widest text-muted-foreground uppercase mb-3"
               >
                 Email
               </label>
@@ -141,20 +140,20 @@ const ContactSection = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 bg-secondary border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all ${
-                  errors.email ? "border-destructive" : "border-border"
+                className={`w-full px-0 py-3 bg-transparent border-b text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-all ${
+                  errors.email ? "border-destructive" : "border-border/50 focus:border-foreground/50"
                 }`}
                 placeholder="your@email.com"
               />
               {errors.email && (
-                <p className="mt-2 text-sm text-destructive">{errors.email}</p>
+                <p className="mt-2 text-xs text-destructive">{errors.email}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-xs tracking-widest text-muted-foreground uppercase mb-3"
               >
                 Message
               </label>
@@ -163,23 +162,22 @@ const ContactSection = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows={5}
-                className={`w-full px-4 py-3 bg-secondary border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none ${
-                  errors.message ? "border-destructive" : "border-border"
+                rows={4}
+                className={`w-full px-0 py-3 bg-transparent border-b text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-all resize-none ${
+                  errors.message ? "border-destructive" : "border-border/50 focus:border-foreground/50"
                 }`}
                 placeholder="Your message"
               />
               {errors.message && (
-                <p className="mt-2 text-sm text-destructive">{errors.message}</p>
+                <p className="mt-2 text-xs text-destructive">{errors.message}</p>
               )}
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full px-8 py-4 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
