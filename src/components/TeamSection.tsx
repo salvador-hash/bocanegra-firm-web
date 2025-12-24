@@ -2,36 +2,26 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 interface TeamMember {
-  id: string;
   name: string;
   role: string;
-  bio: string;
 }
 
 const teamMembers: TeamMember[] = [
   {
-    id: "1",
     name: "Carlos Bocanegra",
     role: "Founder & Chief Investment Officer",
-    bio: "Over 20 years of investment experience across global equity markets. Previously led investment teams at major institutional investors.",
   },
   {
-    id: "2",
     name: "María del Valle",
     role: "Partner & Portfolio Manager",
-    bio: "Extensive experience in fundamental research and portfolio management. Specializes in technology and healthcare sectors.",
   },
   {
-    id: "3",
     name: "Andrés Mendoza",
     role: "Partner & Head of Research",
-    bio: "Deep expertise in quantitative and fundamental analysis. Previously analyst at leading investment banks.",
   },
   {
-    id: "4",
     name: "Laura Espinoza",
     role: "Chief Operating Officer",
-    bio: "Proven track record in operational excellence and risk management across financial services.",
   },
 ];
 
@@ -40,50 +30,54 @@ const TeamSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="team" className="section-padding border-t border-border/30">
+    <section id="team" className="section-padding border-t border-border/10">
       <div className="section-container">
-        <div ref={ref} className="max-w-4xl">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32">
+          {/* Left column */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1 }}
-            className="mb-20"
+            transition={{ duration: 1.5 }}
+            className="lg:col-span-4"
           >
-            <span className="text-xs tracking-widest text-muted-foreground uppercase mb-8 block">
-              Team
+            <span className="text-8xl md:text-9xl font-serif text-foreground/10">
+              4
             </span>
-            <h2 className="text-foreground mb-8">
-              Leadership
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl">
-              An experienced team united by a shared commitment to excellence 
-              and delivering results for our investors.
+            <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground mt-6">
+              Partners
             </p>
           </motion.div>
 
-          <div className="space-y-0">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 1, delay: 0.2 + index * 0.1 }}
-                className="py-10 border-t border-border/30 first:border-t-0"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <div className="lg:col-span-4">
-                    <h3 className="text-foreground text-lg font-serif mb-1">{member.name}</h3>
-                    <p className="text-muted-foreground text-sm">{member.role}</p>
-                  </div>
-                  <div className="lg:col-span-8">
-                    <p className="text-secondary-foreground text-sm leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* Right column - Team list */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1.5, delay: 0.3 }}
+            className="lg:col-span-8 lg:pt-8"
+          >
+            <h2 className="text-foreground mb-16 lg:mb-24">
+              Leadership
+            </h2>
+            
+            <div className="space-y-0">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 1.5, delay: 0.5 + index * 0.1 }}
+                  className="py-8 border-t border-border/10"
+                >
+                  <h3 className="text-foreground text-xl md:text-2xl font-serif mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    {member.role}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

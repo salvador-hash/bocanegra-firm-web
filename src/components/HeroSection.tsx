@@ -2,65 +2,26 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center">
-      <div className="section-container relative z-10">
-        <div className="max-w-4xl">
-          <motion.div
+    <section className="relative min-h-screen flex items-end pb-32 md:pb-40">
+      <div className="section-container relative z-10 w-full">
+        <div className="max-w-5xl">
+          <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
+            transition={{ duration: 2, delay: 0.5 }}
+            className="text-foreground mb-0"
           >
-            <h1 className="text-foreground mb-10">
-              Bocanegra
-              <br />
-              <span className="text-muted-foreground">Asset Management</span>
-            </h1>
-          </motion.div>
+            Bocanegra
+          </motion.h1>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.6 }}
+            transition={{ duration: 2, delay: 1 }}
+            className="text-muted-foreground text-lg md:text-xl font-light tracking-wide mt-8"
           >
-            <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-xl mb-16">
-              Fundamental-driven investing with a long-term perspective. 
-              Generating sustainable alpha through rigorous analysis 
-              and disciplined risk management.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.9 }}
-            className="flex gap-8"
-          >
-            <button
-              onClick={() => {
-                const element = document.querySelector("#contact");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-primary"
-            >
-              Contact
-            </button>
-            <button
-              onClick={() => {
-                const element = document.querySelector("#careers");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-ghost"
-            >
-              Careers
-            </button>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Minimal bottom line */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <div className="section-container">
-          <div className="divider-thin" />
+            Asset Management
+          </motion.p>
         </div>
       </div>
     </section>
