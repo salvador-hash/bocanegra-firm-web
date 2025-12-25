@@ -3,7 +3,7 @@ interface TeamMember {
   name: string;
   role: string;
   bio: string;
-}
+} 
 
 const teamMembers: TeamMember[] = [
   {
