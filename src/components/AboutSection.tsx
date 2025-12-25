@@ -10,7 +10,7 @@ const AboutSection = () => {
             <h2 className="text-foreground">
               A Foundation Built on Conviction
             </h2>
-          </div>
+          </div> 
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div className="space-y-6">
